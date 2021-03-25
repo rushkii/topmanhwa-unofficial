@@ -1,7 +1,7 @@
 from topmanhwa.AsyncIO.manhwa import Manhwa
 import sys, os, asyncio, json
 
-slash = os.system("cls") if sys.platform == "win32" else os.system("clear")
+clear = os.system("cls") if sys.platform == "win32" else os.system("clear")
 
 manga = Manhwa()
 
