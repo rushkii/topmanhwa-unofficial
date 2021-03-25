@@ -14,6 +14,7 @@ class Manhwa:
         async with aiohttp.ClientSession() as ses:
             async with ses.get(f"{self.base}/?s={q}&post_type=wp-manga") as r:
                 s = bSoup(await r.text(), 'lxml')
+                
         listings = s.find_all("div", class_='row c-tabs-item__content')
         res = []
 
