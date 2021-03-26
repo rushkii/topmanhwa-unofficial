@@ -191,7 +191,7 @@ class Manhwa:
                 imbytes = [] # Image bytes
                 downloaded = 1
                 manhwa = await self._images(url) # Get the chapter images
-                print(f"Downloading, {(downloaded/len(manhwa))*100:.1f}")
+                print(f"Downloading, {(downloaded/len(manhwa))*100:.1f}%")
 
                 # Download the image
                 async with aiohttp.ClientSession() as ses:
@@ -200,7 +200,7 @@ class Manhwa:
                             if r.status == 200:
                                 imbytes.append(await r.content.read()) # Bytes saving
                                 downloaded += 1
-                                print(f"Downloading, {(downloaded/len(manhwa))*100:.1f}")
+                                print(f"Downloading, {(downloaded/len(manhwa))*100:.1f}%")
 
                 # Archiving the image bytes
                 z = zipfile.ZipFile(path, 'w')
@@ -208,7 +208,7 @@ class Manhwa:
                     z.writestr(f"{filename}_{i}.{d[-3:]}", byte, compress_type=zipfile.ZIP_DEFLATED)
                 z.close()
 
-                print(f"Download complete, {(downloaded/len(manhwa))*100:.1f}")
+                print(f"Download complete, {(downloaded/len(manhwa))*100:.1f}%")
             else:
                 print("The file is already in the local, and using cached.")
 
@@ -221,7 +221,7 @@ class Manhwa:
                 imbytes = [] # Image bytes
                 downloaded = 1
                 manhwa = await self.images(url) # Get the chapter images
-                print(f"Downloading, {(downloaded/len(manhwa))*100:.1f}")
+                print(f"Downloading, {(downloaded/len(manhwa))*100:.1f}%")
 
                 # Download the image
                 async with aiohttp.ClientSession() as ses:
@@ -230,7 +230,7 @@ class Manhwa:
                             if r.status == 200:
                                 imbytes.append(await r.content.read()) # Bytes saving
                                 downloaded += 1
-                                print(f"Downloading, {(downloaded/len(manhwa))*100:.1f}")
+                                print(f"Downloading, {(downloaded/len(manhwa))*100:.1f}%")
 
                 # Custom size of the layout
                 a4inpt = (img2pdf.mm_to_pt(200),img2pdf.mm_to_pt(300))
