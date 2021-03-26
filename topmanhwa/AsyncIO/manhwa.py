@@ -65,7 +65,7 @@ class Manhwa:
         page : The number current page of the on-going web page
         '''
 
-        last = await self.last_page('on-going')
+        last = await self._last_page('on-going')
         if page > last:
             page = last
 
