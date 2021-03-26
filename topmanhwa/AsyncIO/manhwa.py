@@ -161,11 +161,8 @@ class Manhwa:
             }
         }
 
-    async def images(self, url):
-        '''
-        url : Manhwa chapter url from the topmanhwa.net web
-        '''
-
+    async def _images(self, url):
+        #private only
         async with aiohttp.ClientSession() as ses:
             async with ses.get(url) as r:
                 s = bSoup(await r.text(), 'lxml')
@@ -193,7 +190,7 @@ class Manhwa:
             if not os.path.exists(path):
                 imbytes = [] # Image bytes
                 downloaded = 1
-                manhwa = await self.images(url) # Get the chapter images
+                manhwa = await self._images(url) # Get the chapter images
                 print(f"Downloading, {(downloaded/len(manhwa))*100:.1f}")
 
                 # Download the image
