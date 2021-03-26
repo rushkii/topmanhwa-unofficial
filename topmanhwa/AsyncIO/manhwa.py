@@ -177,10 +177,10 @@ class Manhwa:
         # Generate the filename 
         filename = url.replace(f"{self.manga}/", "").split("/")[0].replace("-", " ").title()
 
-        # Create PDF directory if it's not exists in the local
+        # Create downloads directory if it's not exists in the local
         if not os.path.exists(f"{os.getcwd()}/downloads"):
             os.mkdir(f"{os.getcwd()}/downloads")
-            print("PDF dir created.")
+            print("Downloads dir created.")
 
         if filetype == 'zip':
             # Download chapter as a ZIP file
