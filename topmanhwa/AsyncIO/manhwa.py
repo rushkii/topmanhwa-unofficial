@@ -172,6 +172,8 @@ class Manhwa:
         url      : Manhwa chapter url from the topmanhwa.net web\n
         filetype : Type of file, available type is `pdf` and `zip`
         '''
+        if filetype not in ['pdf','zip']:
+            raise AttributeError("Invalid filetype, available filetype is pdf and zip")
         # Generate the filename 
         filename = url.replace(f"{self.manga}/", "").split("/")[0].replace("-", " ").title()
 
