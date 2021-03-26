@@ -198,7 +198,7 @@ class Manhwa:
                     for img,i in zip(manhwa, range(1, len(manhwa))):
                         async with ses.get(img) as r:
                             if r.status == 200:
-                                imbytes.append(await r.content.read()) # Bytes saving
+                                imbytes.append(await r.content.read()) # Saving image bytes
                                 downloaded += 1
                                 print(f"Downloading, {(downloaded/len(manhwa))*100:.1f}%")
 
@@ -228,7 +228,7 @@ class Manhwa:
                     for img,i in zip(manhwa, range(1, len(manhwa))):
                         async with ses.get(img) as r:
                             if r.status == 200:
-                                imbytes.append(await r.content.read()) # Bytes saving
+                                imbytes.append(await r.content.read()) # Saving image bytes
                                 downloaded += 1
                                 print(f"Downloading, {(downloaded/len(manhwa))*100:.1f}%")
 
