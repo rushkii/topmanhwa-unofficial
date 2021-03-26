@@ -53,10 +53,8 @@ class Manhwa:
 
         return res
 
-    async def last_page(self, path):
-        '''
-        path : Endpoint path for getting the number of the last page
-        '''
+    async def _last_page(self, path):
+        #private only
         async with aiohttp.ClientSession() as ses:
             async with ses.get(f"{self.base}/{path}/") as r:
                 s = bSoup(await r.text(), 'lxml')
