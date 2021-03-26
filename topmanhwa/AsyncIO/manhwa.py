@@ -64,7 +64,6 @@ class Manhwa:
         '''
         page : The number current page of the on-going web page
         '''
-
         last = await self._last_page('on-going')
         if page > last:
             page = last
@@ -78,9 +77,10 @@ class Manhwa:
         async with aiohttp.ClientSession() as ses:
             async with ses.get(f"{self.base}/on-going/page/{page}") as r:
                 s = bSoup(await r.text(), 'lxml')
-        listing = s.find_all("div", class_='page-item-detail manga')
+                
+        listings = s.find_all("div", class_='page-item-detail manga')
         
-        for m in listing:
+        for m in listings:
             try:
                 chapter = int(re.search("Chapter ([0-9]+)",m.find('span', class_='chapter font-meta').a.text).group(1)) if m.find('span', class_='chapter font-meta') else 0
             except:
@@ -102,7 +102,6 @@ class Manhwa:
         '''
         url : Manhwa page url from the topmanhwa.net web
         '''
-
         async with aiohttp.ClientSession() as ses:
             async with ses.get(url) as r:
                 s = bSoup(await r.text(), 'lxml')
@@ -173,7 +172,6 @@ class Manhwa:
         url      : Manhwa chapter url from the topmanhwa.net web\n
         filetype : Type of file, available type is `pdf` and `zip`
         '''
-
         # Generate the filename 
         filename = url.replace(f"{self.manga}/", "").split("/")[0].replace("-", " ").title()
 
